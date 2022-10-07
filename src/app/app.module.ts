@@ -13,7 +13,7 @@ import { PalestrantesComponent } from './palestrantes/palestrantes.component';
     EventosComponent,
     PalestrantesComponent
   ],
-  imports: [
+  imports: [ //TESTE GIT, SEGUNDA ALTERACAO NO FRONT
     BrowserModule,
     AppRoutingModule,
     HttpClientModule, //modulo do http client, permite eusar o modulo.
