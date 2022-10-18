@@ -1,9 +1,66 @@
-<h1>Eventos do Components</h1>
-
-<div *ngFor="let evento of eventos">
-  <p><b>Tema: </b>{{evento.tema}}</p>
-  <p><b>Local: </b>{{evento.local}}</p>
-<hr>
+<div class="form-inline">
+  <div class="form-group mb-2">
+    <label class="mr-2">Filtro:</label>
+    <input
+    type="text"
+    class="form-control mr-2"
+    placeholder="Buscar"
+    [(ngModel)]="filterList"
+    ><!-- TWO-WAY DATA BINDING - data binding de duas vias, altera os valores na classe caso altere no form e no form caso altere na classe -->
+    <!-- <button type="button" class="btn btn-outline-success">Buscar</button> -->
+  </div>
 </div>
+<!-- <h3>Filtro: {{filterList}} </h3> -->
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th>
+        <button type="button" class="btn btn-outline-light btn-sm"
+          (click)="alterImgState()">
+          {{!imgOnOff ? 'Exibir' : 'Ocultar'}} <!-- interpolacao com condição if representada pelo '?', e alterando o nome do botao -->
+        </button>
+      </th>
+      <th>#</th>
+      <th>Tema</th>
+      <th>Local</th>
+      <th>Data</th>
+      <th>Qtd Pessoas</th>
+      <th>Lote</th>
+      <th>Opções</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="eventos && eventos.length">
+    <tr *ngFor="let evento of eventosFilter"> <!-- *ngFor: DIRETIVA ESTRUTURAL do for, usado para percorrer um array, nesse caso busca o array eventos(declarado na classe) e armazena na variavel local evento  -->
+      <td>
+        <img [collapse]="!imgOnOff"
+             [isAnimated]="true"
+          src="/assets/{{evento.imagemURL}}"
+          [style.width.px]= "widthImg"
+          [style.margin.px]= "marginImg"
+        ><!-- PROPERTIES BINDINGS - atributos representados por []   -->
+      </td>
+    <td>{{evento.eventoId}}</td> <!-- {{ }} INTERPOLAÇAO com binding: serve para passagem de parametros, definidos na classe do html. faz contas, chama metodos, etc  -->
+    <td>{{evento.tema}}</td> <!-- utilizamos a interpolação para usar o array eventos. o nome do campo dentro da API do back  -->
+    <td>{{evento.local}}</td>
+    <td>{{evento.dataEvento}}</td>
+    <td>{{evento.qtdPessoa}}</td>
+    <td>{{evento.lote}}</td>
+    <td>
+      <button type="button" class="btn btn-primary btn-sm mr-2">Editar</button>
+      <button type="button" class="btn btn-danger btn-sm mr-2">Excluir</button>
 
+
+    </td>
+  </tr>
+  </tbody>
+  <tfoot *ngIf="!eventos.length">
+    <tr>
+      <td colspan="8" class="text-center">
+        <h4>Nenhum evento encontrado!</h4>
+      </td>
+    </tr>
+  </tfoot>
+</table>
+
+<div >
 
