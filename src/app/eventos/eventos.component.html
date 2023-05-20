@@ -27,6 +27,8 @@
       <th>Qtd Pessoas</th>
       <th>Lote</th>
       <th>Opções</th>
+      <th>Telefone</th>
+      <th>Email</th>
     </tr>
   </thead>
   <tbody *ngIf="eventos && eventos.length">
@@ -43,8 +45,10 @@
     <td>{{evento.tema}}</td> <!-- utilizamos a interpolação para usar o array eventos. o nome do campo dentro da API do back  -->
     <td>{{evento.local}}</td>
     <td>{{evento.dataEvento}}</td>
-    <td>{{evento.qtdPessoa}}</td>
+    <td>{{evento.qtdPessoas}}</td>
     <td>{{evento.lote}}</td>
+    <td>{{evento.telefone}}</td>
+    <td>{{evento.email}}</td>
     <td>
       <button type="button" class="btn btn-primary btn-sm mr-2">Editar</button>
       <button type="button" class="btn btn-danger btn-sm mr-2">Excluir</button>
